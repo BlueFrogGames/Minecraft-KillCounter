@@ -32,7 +32,7 @@ Each player can have as many trackers on them, so be aware that the custom score
 
 Example:
 
-Player 1 Tags: `minecraft:spider`, `minecraft:creeper`
-Player 2 Tags: `minecraft:cow`
+- Player 1 Tags: `minecraft:spider`, `minecraft:creeper`
+- Player 2 Tags: `minecraft:cow`
 
 The `kc:custom` score will increment when Player 1 kills a spider or a cow, but will not increment if player 2 kills one of those mobs.
