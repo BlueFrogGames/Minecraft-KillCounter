@@ -2,21 +2,21 @@
   "format_version": 1,
   "header": {
     "name": "Kill Counter Behaviors",
-    "description": "Provides Hostile/All/Custom (vanilla only) mob kill counts",
+    "description": "Provides Hostile/All/Custom mob kill counts",
     "uuid": "5b46a682-a1b6-4814-8f4b-ebc90833b716",
     "version": [
-      1,
+      2,
       0,
       0
     ]
   },
   "modules": [
     {
-      "description": "behaviours for Kill Counter",
-      "type": "client_data",
+      "description": "behaviors for Kill Counter",
+      "type": "data",
       "uuid": "77fb8632-3d90-442d-a817-5c6a01ab5f2d",
       "version": [
-        1,
+        2,
         0,
         0
       ]

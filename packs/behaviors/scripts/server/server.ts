@@ -39,11 +39,15 @@ namespace Server
     const objectives = [
         {
             objective: scoreboardPrefix + "hostile",
-            display: "Hostile"
+            display: "Hostile Kills"
         },
         {
             objective: scoreboardPrefix + "all",
-            display: "All"
+            display: "All Kills"
+        },
+        {
+            objective: scoreboardPrefix + "custom",
+            display: "Custom Kills"
         }
     ];
 
@@ -53,14 +57,21 @@ namespace Server
         initializeScoreboard();
         this.listenForEvent("minecraft:entity_death", ({ data }) =>
         {
-            if(data.killer && (data.killer as IEntity).__identifier__ !== "minecraft:player")
+            const killer = data.killer as IEntity;
+            if(killer && killer.__identifier__ !== "minecraft:player")
                 return;
+
+            const tags = this.getComponent(killer, "minecraft:tag").data as string[];
 
             if(hostileMobs.indexOf((data.entity as IEntity).__identifier__) > -1)
             {
-                incrementScore(scoreboardPrefix+"hostile", data.killer);
+                incrementScore(scoreboardPrefix+"hostile", killer);
             }
-            incrementScore(scoreboardPrefix+"all", data.killer);
+            if(tags.indexOf((data.entity as IEntity).__identifier__) > -1)
+            {
+                incrementScore(scoreboardPrefix+"custom", killer)
+            }
+            incrementScore(scoreboardPrefix+"all", killer);
         });
     }
 
@@ -80,6 +91,6 @@ namespace Server
     function incrementScore(objective: string, player: IEntity)
     {
         let { x, y, z } = system.getComponent<IPositionComponent>(player, "minecraft:position").data;
-        system.executeCommand(`/scoreboard players add @e[x=${x},y=${y},z=${z},dx=0,dy=0,dz=0,type=player] ${objective} 1`, (callback) => { });
+        system.executeCommand(`/scoreboard players add @e[x=${x},y=${y},z=${z},type=player,c=1] ${objective} 1`, (callback) => { });
     }
 }
