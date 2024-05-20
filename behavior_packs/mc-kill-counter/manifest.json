@@ -1,0 +1,26 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Kill Counter Behaviors",
+		"description": "Provides Hostile/All/Custom mob kill counts",
+		"uuid": "5b46a682-a1b6-4814-8f4b-ebc90833b716",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 20, 30]
+	},
+	"modules": [
+		{
+			"description": "Script resources",
+			"language": "javascript",
+			"type": "script",
+			"uuid": "77fb8632-3d90-442d-a817-5c6a01ab5f2d",
+			"version": [1, 0, 0],
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.8.0"
+		}
+	]
+}
